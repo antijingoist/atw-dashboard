@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+		<title>Dashboard</title>
+		<link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
+		<script src="smoothie.js"></script>
+		<script src="anwarConnection.js"></script>
+		<script src="controller.js"></script>
+		<script>
+		  window.addEventListener("load",(event) => {
+				const dashboardController = new controller();
+			});
+		</script>
+		</head>
+		<body>
+			<div class = container>
+				<div id="statuses" class="info">
+					<div class="chartItem userStats" id="metric">
+	
+					</div>
+					<div id="console">
+	
+					</div>
+				</div>
+				<div id="chartArea">
+					
+				</div>
+			</div>
+			<div id="settings" class="window">
+				<h2>Settings</h2>
+				<div class="settingsWrapper">
+					<p>Track your progress by entering your NickName and Project you are working on.</p>
+					<label for="inputNickName">NickName:</label>
+					<input id="inputNickName" type="text" name="nickName" placeholder="Nickname" />
+					<label for="inputProject">Project Name:</label>
+					<input id="inputProject" type="text" name="projectName" placeholder="Project Name" />
+					<p>List servers to monitor in the format: <code>serverName, serverURL:port</code>. For example: <code>Warrior1,http://localhost:8001</code>. Place each on a seperate line.</p>
+					<label for="inputServerList">Server List:</label>
+					<textarea id="inputServerList"></textarea>
+				</div>
+				<button id="settingsSave" class = "default save">Save</button>
+			</div>
+  </body>
+</html>
