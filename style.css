@@ -220,6 +220,7 @@ html, body {
 
 #settings textarea {
   flex-grow: 1;
+  min-height: 5rem;
   font-family: monospace;
 }
 
