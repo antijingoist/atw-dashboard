@@ -25,6 +25,12 @@ I did, and instead of trying to hook into Grafana or any other more established 
 
 * Enjoy your dashboard!
 
+## Extra stuff
+
+* Place custom styles in user.css
+
+* Adjust colors in the console: Instance names are css classes in the log in the sidebar. Style a line for an instance using '#console p:has(.your-instance-name) {}'. The message text and timestamp are 'msg' and 'timestamp' respectively. The instance name itself is '.instName'
+
 ## ToDo
 
 * Shutting down in-ui.
