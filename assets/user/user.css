@@ -3,36 +3,19 @@
   --foreground-color: aliceblue;
   --background-color: black;
   --font-family: sans-serif;
-  --console-node-bg: silver;
-  --console-node-fg: black;
-  --console-timestamp-fg: greenyellow;
+  --console-node-bg: transparent;
+  --console-node-fg: var(--foreground-color);
+  --console-timestamp-fg: var(--foreground-color);
+  --console-timestamp-bg: transparent;
   --console-line-fg: var(--foreground-color);
+  --console-line-bg: transparent;
   --negative-color: red;
   --window-foreground-color: black;
   --window-background-color: white;
   --window-hint-background:  rgba(0,0,0,0.15);
+  --toolbox-label-bg: transparent;
+  --toolbox-label-fg: var(--foreground-color);
+  --toolbox-icon-bg: var(--foreground-color);
+  --toolbox-icon-fg: var(--background-color);
 }
 
-
-#console {
-  overflow-y: hidden;
-}
-
-.instName {
-  border-radius: 3px;
-  padding: 1px 2px;
-}
-
-#chartArea {
-  font-size: 0.69rem;
-}
-
-.chartSet {
-  margin-top: 1rem;
-  margin-bottom: 0;
-}
-
-.userStats {
-  box-shadow: 0px 5px 25px 25px black;
-  z-index: 2;
-}
