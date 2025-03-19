@@ -1,6 +1,7 @@
 class anwarConnection {
   #serverURL;
   #instName;
+  projectName;
   serverConnection;
   eventCallbacks;
   sending;
@@ -8,11 +9,13 @@ class anwarConnection {
   bandwidthChart;
   controller;
 
+
   constructor(name, serverURL, objectInsertInto, controllerObject, reuse=false) {
     this.eventCallbacks = {};
     this.#serverURL = serverURL; 
     this.#instName = name;
     this.controller = controllerObject;
+    this.projectName = "";
 
     this.serverConnection = new SockJS(this.#serverURL);
     if(!(reuse)){
@@ -74,6 +77,11 @@ class anwarConnection {
             if (document.getElementById(name).classList.contains("error")) {
               document.getElementById(name).classList.remove("error");
             }
+          }
+        }
+        if (dataDoc.event_name="project.refresh"){
+          if(dataDoc.message.project) {
+            para.controller.setProject(dataDoc.message.project.title.toLowerCase());
           }
         }
       }
