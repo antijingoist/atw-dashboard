@@ -4,13 +4,13 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <meta name="apple-mobile-web-app-capable" content="yes">
 		<title>Dashboard</title>
-		<link rel="stylesheet" href="style.css">
-		<link rel="stylesheet" href="user.css">
+		<link rel="stylesheet" href="./assets/css/style.css">
+		<link rel="stylesheet" href="./assets/user/user.css">
 		<script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothie/1.9.0/smoothie.min.js" integrity="sha512-undg3joxVi3DngMsRJlOG4mM6P+aFkSiRsDm+CiWgAMZPX+Kj7acjft3ZzMaL9WaYYuSgvqkYdT0ESMrdUNNLQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-		<script src="anwarConnection.js"></script>
-		<script src="controller.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/smoothie/1.4.0/smoothie.min.js" integrity="sha512-Z3YfKatKZ2mqlORsEMhpYZB4GDBT9LcS89joy9YP6M9B5F8T6HRP4nHwB4BEK7NAoFH882kUg2d1S4xGvaTLWA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>		
+		<script src="./assets/js/anwarConnection.js"></script>
+		<script src="./assets/js/controller.js"></script>
 		<script>
 		  window.addEventListener("load",(event) => {
 				
@@ -36,9 +36,7 @@
 					<div id="console">
 	
 					</div>
-				</div>
-				<div id="chartArea">
-					<div id="toolbox" class="chartSet">
+					<div id="toolbox" class="">
 						<div id=toolbox-add-node class="toolbox-button" data-window-open="window-add-node">
 							<div class="icon" data-window-open="window-add-node"></div>
 							<div class=label>Add Instance</div>
@@ -52,6 +50,9 @@
 							<div class=label>Reset</div>
 						</div>
 					</div>
+				</div>
+				<div id="chartArea">
+					
 				</div>
 			</div>
 			<div id="window-settings" class="window">

@@ -14,7 +14,6 @@ class controller {
     this.warriorServerConnections = new Array();
 
     if(!savedSettings){
-      console.log(savedSettings);
       this.allSettings = { nick : "", project: "", reuse: true, warriorServers: {}};
       this.showSettings();
     } else {
@@ -82,12 +81,12 @@ class controller {
       })
         .then((res) => res.text())
         .then((stats) => {
-
           var downloaderArray = new Array();
           var currentDate = new Date().toLocaleString();
           var fullStatData = JSON.parse(stats);
+          var statPlace = document.getElementById("metric");
+
           if (fullStatData.downloaders.indexOf(name) > 0) {
-            var statPlace = document.getElementById("metric");
 
             for (const [key, value] of Object.entries(fullStatData.downloader_bytes)) {
               downloaderArray.push({ "name": key, "dl": value });
@@ -104,6 +103,8 @@ class controller {
                                   <p>Position: <span class=data>${statPos} / ${statTotP}</span></p>
                                   <p>As of: <span class=data>${currentDate}</span></p>`;
             this.updateTimer(name, project);
+          } else {
+            statPlace.innerHTML = `<p>Stats for ${name}: ${project} not available yet.</p>`;
           }
 
 

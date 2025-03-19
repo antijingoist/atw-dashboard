@@ -1,0 +1,38 @@
+/* User settings  */
+:root {
+  --foreground-color: aliceblue;
+  --background-color: black;
+  --font-family: sans-serif;
+  --console-node-bg: silver;
+  --console-node-fg: black;
+  --console-timestamp-fg: greenyellow;
+  --console-line-fg: var(--foreground-color);
+  --negative-color: red;
+  --window-foreground-color: black;
+  --window-background-color: white;
+  --window-hint-background:  rgba(0,0,0,0.15);
+}
+
+
+#console {
+  overflow-y: hidden;
+}
+
+.instName {
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+#chartArea {
+  font-size: 0.69rem;
+}
+
+.chartSet {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+
+.userStats {
+  box-shadow: 0px 5px 25px 25px black;
+  z-index: 2;
+}

@@ -159,6 +159,7 @@ html, body {
   flex-direction: row;
   align-content: flex-start;
   justify-content: space-between;
+  align-self: center;
 }
 
 #toolbox .icon {
