@@ -34,62 +34,59 @@ class controller {
   }
 
   saveSettings() {
-    console.log(this.allSettings);
-
-    this.allSettings.nick = document.getElementById("inputNickName").value;
-    this.allSettings.project = document.getElementById("inputProject").value;
-    
+    this.allSettings.nick = document.getElementById("inputNickName").value;    
     var warriorServerString = document.getElementById("inputServerList").value;
     var warriorServers = warriorServerString.split("\n");
     var warriorServer = new Array;
 
     warriorServers.forEach(serverItem => {
       warriorServer = serverItem.split(",");
-      try{
-        this.warriorServerConnections.push(new anwarConnection( warriorServer[0].trim(), warriorServer[1], this.#chartArea, this));
-      } catch(ex) {
-        console.log(ex);
-      }
+      this.addSingleServer(warriorServer);
     });
-    this.hideSettings();
+    this.window_close(this.#settingsDialog);
     this.updateMetrics(this.allSettings.nick, this.allSettings.project);
+    localforage.setItem('dashSettings', this.allSettings).then(function(value) {
+      console.log(value);
+    });
   }
 
   updateMetrics(name, project) {
-    fetch(`https://legacy-api.arpa.li/${project}/stats.json`, {
-      "method": "GET",
-      "headers": {}
-    })
-      .then((res) => res.text())
-      .then((stats) => {
-
-        var downloaderArray = new Array();
-        var currentDate = new Date().toLocaleString();
-        var fullStatData = JSON.parse(stats);
-        if (fullStatData.downloaders.indexOf(name) > 0) {
-          var statPlace = document.getElementById("metric");
-
-          for (const [key, value] of Object.entries(fullStatData.downloader_bytes)) {
-            downloaderArray.push({ "name": key, "dl": value });
-          }
-          downloaderArray.sort(function (a, b) {
-            return b.dl - a.dl;
-          });
-          var statPos = downloaderArray.findIndex(e => { return (e.name === name) });
-          var gigsDL = this.humanBytes( fullStatData.downloader_bytes[name] );
-          var statTotP = fullStatData.downloaders.length;
-          statPlace.innerHTML = `<h1>Downloading: ${project}</h1>
-                                <p>Data Saved: <span class=data>${gigsDL.toLocaleString()}</span></p>
-                                <p>Items Saved: <span class=data>${fullStatData.downloader_count[name].toLocaleString()}</span></p>
-                                <p>Position: <span class=data>${statPos} / ${statTotP}</span></p>
-                                <p>As of: <span class=data>${currentDate}</span></p>`;
-          this.updateTimer(name, project);
-        }
-
-
+    if (project) {
+      fetch(`https://legacy-api.arpa.li/${project}/stats.json`, {
+        "method": "GET",
+        "headers": {}
       })
-      .then(console.log.bind(console))
-      .catch(console.error.bind(console));
+        .then((res) => res.text())
+        .then((stats) => {
+
+          var downloaderArray = new Array();
+          var currentDate = new Date().toLocaleString();
+          var fullStatData = JSON.parse(stats);
+          if (fullStatData.downloaders.indexOf(name) > 0) {
+            var statPlace = document.getElementById("metric");
+
+            for (const [key, value] of Object.entries(fullStatData.downloader_bytes)) {
+              downloaderArray.push({ "name": key, "dl": value });
+            }
+            downloaderArray.sort(function (a, b) {
+              return b.dl - a.dl;
+            });
+            var statPos = downloaderArray.findIndex(e => { return (e.name === name) });
+            var gigsDL = this.humanBytes( fullStatData.downloader_bytes[name] );
+            var statTotP = fullStatData.downloaders.length;
+            statPlace.innerHTML = `<h1>Downloading: ${project}</h1>
+                                  <p>Data Saved: <span class=data>${gigsDL.toLocaleString()}</span></p>
+                                  <p>Items Saved: <span class=data>${fullStatData.downloader_count[name].toLocaleString()}</span></p>
+                                  <p>Position: <span class=data>${statPos} / ${statTotP}</span></p>
+                                  <p>As of: <span class=data>${currentDate}</span></p>`;
+            this.updateTimer(name, project);
+          }
+
+
+        })
+        .then(console.log.bind(console))
+        .catch(console.error.bind(console));
+    }
   }
 
    humanBytes(bytes) {
@@ -122,6 +119,11 @@ class controller {
     setTimeout(() => {
       this.updateMetrics(nick, project);
     }, 300000);
+  }
+
+  setProject(project) {
+    this.allSettings.project = project;
+    this.updateMetrics(this.allSettings.nick, this.allSettings.project);
   }
 
 }
