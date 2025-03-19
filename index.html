@@ -6,13 +6,24 @@
 		<title>Dashboard</title>
 		<link rel="stylesheet" href="style.css">
 		<link rel="stylesheet" href="user.css">
+		<script src="https://cdn.jsdelivr.net/npm/localforage@1.10.0/dist/localforage.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sockjs-client@1/dist/sockjs.min.js"></script>
 		<script src="smoothie.js"></script>
 		<script src="anwarConnection.js"></script>
 		<script src="controller.js"></script>
 		<script>
 		  window.addEventListener("load",(event) => {
-				const dashboardController = new controller();
+				
+				localforage.ready(function() {
+					localforage.getItem('dashSettings').then(function(savedSettings){
+							const dashboardController = new controller(savedSettings);
+					})
+					.catch(function(error){
+						console.log(error);
+						const dashboardController = new controller(null);
+					});
+				});
+				
 			});
 		</script>
 		</head>
@@ -27,22 +38,55 @@
 					</div>
 				</div>
 				<div id="chartArea">
-					
+					<div id="toolbox" class="chartSet">
+						<div id=toolbox-add-node class="toolbox-button" data-window-open="window-add-node">
+							<div class="icon" data-window-open="window-add-node"></div>
+							<div class=label>Add Instance</div>
+						</div>
+						<div id=toolbox-change-nick class="toolbox-button">
+							<div class="icon" data-window-open="window-change-nick"></div>
+							<div class=label>Change NickName</div>
+						</div>
+						<div id=toolbox-reset class="toolbox-button">
+							<div class="icon"></div>
+							<div class=label>Reset</div>
+						</div>
+					</div>
 				</div>
 			</div>
-			<div id="settings" class="window">
-				<h2>Settings</h2>
+			<div id="window-settings" class="window">
+				<h2>Settings</h2><button class="close-cancel" data-window-close="window-settings">X</button>
 				<div class="settingsWrapper">
-					<p>Track your progress by entering your NickName and Project you are working on.</p>
+					<p>Track your progress by entering the nickname used in your instances. Project you are working on will be pulled from your instance.</p>
 					<label for="inputNickName">NickName:</label>
 					<input id="inputNickName" type="text" name="nickName" placeholder="Nickname" />
-					<label for="inputProject">Project Name:</label>
-					<input id="inputProject" type="text" name="projectName" placeholder="Project Name" />
 					<p>List servers to monitor in the format: <code>serverName, serverURL:port</code>. For example: <code>Warrior1,http://localhost:8001</code>. Place each on a seperate line.</p>
 					<label for="inputServerList">Server List:</label>
 					<textarea id="inputServerList"></textarea>
 				</div>
-				<button id="settingsSave" class = "default save">Save</button>
+				<button id="window-settings-save" class = "default save">Save</button>
+			</div>
+
+			<div id="window-add-node" class="window">
+				<h2>Add Instance</h2><button class="close-cancel" data-window-close="window-add-node">X</button>
+				<div class="settingsWrapper">
+					<p>Add instance as <code>serverName, serverURL:port</code>.</p>
+					<label for="serverName">Server:</label>
+					<input id="serverConnectionString" type="text" name="serverConnectionString" 
+								 placeholder="server-name, server-address:port-number" />
+					<button id="window-node-add-addnode" class = "default save">Add</button>
+				</div>
+			</div>
+
+			<div id="window-change-nick" class="window">
+				<h2>Change NickName</h2><button class="close-cancel" data-window-close="window-change-nick">X</button>
+				<div class="settingsWrapper">
+					<p>Enter NickName used to display stats</p>
+					<label for="nickName">Nick Name:</label>
+					<input id="window-change-nick-nickname" type="text" name="window-change-nick-nickname" 
+								 placeholder="New Nickname" />
+					<button id="window-change-nick-save" class = "default save">Change</button>
+				</div>
 			</div>
   </body>
 </html>
