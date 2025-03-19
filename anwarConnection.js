@@ -105,10 +105,6 @@ class anwarConnection {
     }
   }
 
-  registerEvent(event_name, func) {
-    this.eventCallbacks[event_name] = func;
-  }
-
   createChart(name) {
     this.bandwidthChart = new SmoothieChart(
       {
