@@ -373,6 +373,13 @@ html, body {
     font-size: 2rem;
     padding: 1rem; 
   }
+  #toolbox .icon {
+    height: 1.5rem;
+    width: 1.5rem;
+  }
+  #toolbox {
+    font-size: 0.75rem;
+  }
 }
 
 
