@@ -15,13 +15,25 @@ I did, and instead of trying to hook into Grafana or any other more established 
 
 * An aggregate log that shows your instances are in fact doing work. 
 
+* Use user.css to style your dashboard how you want.
+
+* Responsive design works on mobile and tablets.
+
+* Settings saved automatically.
+
 ## Usage
 
-* When the page loads, it will ask you for information. Enter the NickName you are using for your instances, and the name of the project (used in the tracker url). It's case sensitive.
+When the page loads, it will ask you for information. 
 
-* Enter your list of instance names and urls and press save. (Not: this list is not saved between sessions yet. If you have a large list of URLs, save it elsewhere to paste in).
+* Enter the NickName you are using to track your instances.
+
+* Enter your list of instance names and urls and press save. 
 
 * Manage your instance by clicking it's name, where you will be taken to it's normal management page where you can adjust settings or shut down.
+
+* Add additional instances using the add buton. Change the nickname you are tracking using change nickname.
+
+* Clear settings and restart using "Reset"
 
 * Enjoy your dashboard!
 
