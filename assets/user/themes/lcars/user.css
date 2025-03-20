@@ -26,7 +26,6 @@
 
 #chartArea {
   font-size: 0.69rem;
-  overflow:hidden;
 }
 
 .chartSet {
@@ -84,6 +83,10 @@
 
 #chartArea .chartSet.error .heading a {
   color: black;
+}
+
+#chartArea canvas {
+  border: none;
 }
 
 #metric {
@@ -156,4 +159,19 @@
 #toolbox .label {
   color: var(--console-node-fg);
   text-align: center;
+}
+
+::-webkit-scrollbar {
+  display: block;
+  width: 15px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #1D212B;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #35627B;
+  border-top: 10px solid #254356;
+  border-bottom: 10px solid #254356;
 }
