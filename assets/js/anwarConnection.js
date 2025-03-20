@@ -29,7 +29,7 @@ class anwarConnection {
       para.createChart(name);
       para.sending = new TimeSeries();
       para.receiving = new TimeSeries();
-      para.bandwidthChart.addTimeSeries(para.receiving, { strokeStyle: '#459B34' });
+      para.bandwidthChart.addTimeSeries(para.receiving, { strokeStyle: '#459B34', fillStyle:'rgba(0,138,92,0.30)' });
       para.bandwidthChart.addTimeSeries(para.sending);
       para.consoleLog(name, 'Connected.');
     }
