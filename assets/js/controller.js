@@ -97,7 +97,7 @@ class controller {
             var statPos = downloaderArray.findIndex(e => { return (e.name === name) });
             var gigsDL = this.humanBytes( fullStatData.downloader_bytes[name] );
             var statTotP = fullStatData.downloaders.length;
-            statPlace.innerHTML = `<h1>Downloading: ${project}</h1>
+            statPlace.innerHTML = `<h1>${project}</h1>
                                   <p>Data Saved: <span class=data>${gigsDL.toLocaleString()}</span></p>
                                   <p>Items Saved: <span class=data>${fullStatData.downloader_count[name].toLocaleString()}</span></p>
                                   <p>Position: <span class=data>${statPos} / ${statTotP}</span></p>
