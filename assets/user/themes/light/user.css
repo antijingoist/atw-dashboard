@@ -1,0 +1,23 @@
+:root {
+  --foreground-color: rgb(0, 0, 0);
+  --background-color: rgb(255, 255, 255);
+  --font-family: sans-serif;
+  --console-node-bg: transparent;
+  --console-node-fg: var(--foreground-color);
+  --console-timestamp-fg: var(--foreground-color);
+  --console-timestamp-bg: transparent;
+  --console-line-fg: var(--foreground-color);
+  --console-line-bg: transparent;
+  --negative-color: red;
+  --window-foreground-color: black;
+  --window-background-color: white;
+  --window-hint-background:  rgba(0,0,0,0.15);
+  --toolbox-label-bg: transparent;
+  --toolbox-label-fg: var(--foreground-color);
+  --toolbox-icon-bg: var(--foreground-color);
+  --toolbox-icon-fg: var(--background-color);
+}
+
+.window {
+  border: 4px double black;
+}

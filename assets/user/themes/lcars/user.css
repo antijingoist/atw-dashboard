@@ -1,0 +1,159 @@
+/* User settings  */
+:root {
+  --foreground-color: #80C8EC;
+  --background-color: black;
+  --font-family: sans-serif;
+  --console-node-bg: #313748;
+  --console-node-fg: #9FA5B8;
+  --console-timestamp-fg: #ED715B;
+  --console-line-fg: #6E748A;
+  --negative-color: #EA3323;
+  --window-foreground-color: black;
+  --window-background-color: white;
+  --window-hint-background:  rgba(0,0,0,0.15);
+  --chart-bandwidth-color: #F19C81;
+  --lcars-br: 0 25px 25px 0;
+}
+
+#console {
+  overflow-y: hidden;
+}
+
+.instName {
+  border-radius: 3px;
+  padding: 1px 2px;
+}
+
+#chartArea {
+  font-size: 0.69rem;
+  overflow:hidden;
+}
+
+.chartSet {
+  margin-top: 1rem;
+  margin-bottom: 0;
+  border: 5px solid #313748;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 10px;
+  padding: 0 5px;
+}
+
+#chartArea .chartSet .heading {
+  background: var(--console-node-bg);
+  border-radius: var(--lcars-br);
+  margin-top:0;
+  position:relative;
+  text-align: left;
+}
+#chartArea .chartSet .heading h2::after {
+  content: " ";
+  background-color: rgb(0, 0, 0);
+  height: 3.5rem;
+  top:0px;
+  right: 2rem;
+  width: 1rem;
+  position:absolute;
+  display:block;
+  margin: 0 0.5rem;
+}
+
+#chartArea .chartSet .heading h2 {
+  text-align: left;
+  padding-left: 1rem;
+  font-size: 1.5rem;
+  line-height: 1rem;
+}
+
+#chartArea .chartSet .heading a {
+  color: var(--console-node-fg);
+}
+
+.chartSet.error {
+  background: transparent;
+  border-color: var(--negative-color);
+  border-top: none;
+  border-right: none;
+  border-width: 5px;
+}
+
+#chartArea .chartSet.error .heading {
+  background-color: var(--negative-color);
+  color: black;
+}
+
+#chartArea .chartSet.error .heading a {
+  color: black;
+}
+
+#metric {
+  border: 5px solid #313748;
+  border-right: none;
+  border-top: none;
+  border-radius: 0 10px;
+  margin: 1px;
+  width: calc(100% - 2rem);
+  padding: 1rem;
+  padding-top: none;
+  margin-top:1rem;
+}
+
+#metric h1 {
+  background: var(--console-node-bg);
+  left: 0;
+  margin-left: -0.75rem;
+  margin-top: -1rem;
+  padding: 5px;
+  padding-left: 1rem;
+  color: var(--console-node-fg);
+  line-height: 3rem;
+  border: none;
+  overflow: hidden;
+  white-space: nowrap;
+  width: calc(100% - 3rem);
+}
+
+#metric h1::after {
+  content: " ";
+  background-color:var(--console-node-bg);
+  height: calc(3rem + 10px);
+  border-radius: var(--lcars-br);
+  top: 0;
+  width: 2rem;
+  right: 0rem;
+  position:absolute;
+  display:inline-block;
+  margin: 0 0.5rem;
+}
+
+#toolbox {
+  border-radius: 4rem;
+  padding: 0 3rem;
+  background-color: var(--console-node-bg);
+  border: none;
+  width: calc(100% - 6rem);
+  flex-wrap: nowrap;
+  justify-content: space-between  ;
+}
+
+#toolbox .toolbox-button {
+  border-left: 1rem solid var(--background-color);
+  border-radius: 0;
+  margin: 0;
+  padding: 0.5rem 0.75rem;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+#toolbox .toolbox-button:last-of-type {
+  border-right: 1rem solid var(--background-color);
+}
+
+#toolbox .icon {
+  background-color: var(--console-node-fg);
+}
+
+#toolbox .label {
+  color: var(--console-node-fg);
+  text-align: center;
+}
