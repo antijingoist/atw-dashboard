@@ -16,6 +16,7 @@
   --toolbox-label-fg: var(--foreground-color);
   --toolbox-icon-bg: var(--foreground-color);
   --toolbox-icon-fg: var(--background-color);
+  --chart-bandwidth-color: 
 }
 
 body {
@@ -75,10 +76,11 @@ html, body {
 }
 
 #chartArea canvas {
-  border-left: 1px solid --foreground-color;
-  border-bottom: 1px solid --foreground-color;
-  width: 100% !important;
+  border-left: 1px solid var(--foreground-color);
+  border-bottom: 1px solid var(--foreground-color);
+  width: 100%;
   height: 250px;
+  aspect-ratio: auto 300 / 250;
 }
 
 .bandwidth {
@@ -101,7 +103,7 @@ html, body {
 
 .bandwidth.received,
 .bandwidth.receiving {
-  color: rgb(0, 169, 0);
+  color: var(--chart-bandwidth-color);
   text-align: right;
 }
 
