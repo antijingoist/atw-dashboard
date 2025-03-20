@@ -78,7 +78,7 @@ html, body {
 #chartArea canvas {
   border-left: 1px solid var(--foreground-color);
   border-bottom: 1px solid var(--foreground-color);
-  width: 100%;
+  width: 100% !important;
   height: 250px;
   aspect-ratio: auto 300 / 250;
 }
