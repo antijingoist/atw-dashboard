@@ -97,10 +97,15 @@ class anwarConnection {
     var consoleDiv = document.getElementById("console");
     var msgData = document.createElement("p");
     var timeStamp = new Date().toLocaleString();
+    
+    if (msg.includes("=403")) {
+      msgData.classList.add("error", "e403");
+    }
+
     msgData.innerHTML = `<span class="instName ${name}">${name}</span>: <span class="msg">${msg}</span> - <span class="timestamp">${timeStamp}</span>`;
     consoleDiv.appendChild(msgData);
     consoleDiv.scrollTop = consoleDiv.scrollHeight;
-    if(consoleDiv.childNodes.length > 50){
+    if(consoleDiv.childNodes.length > 500){
       consoleDiv.removeChild(consoleDiv.firstElementChild);
     }
   }
