@@ -160,5 +160,4 @@ class anwarConnection {
       return (Math.round(10 * bytes / (1024)) / 10) + ' kB';
     }
   }
-
 }
