@@ -41,4 +41,6 @@ When the page loads, it will ask you for information.
 
 * Place custom styles in user.css
 
+* Use the included themes by copying over the user.css
+
 * Adjust colors in the console: Instance names are css classes in the log in the sidebar. Style a line for an instance using '#console p:has(.your-instance-name) {}'. The message text and timestamp are 'msg' and 'timestamp' respectively. The instance name itself is '.instName'
