@@ -71,7 +71,9 @@ class anwarConnection {
         }
         if (dataDoc.event_name === "item.output") {
           if (dataDoc.message.data.startsWith("Project code is out of date and needs to be upgraded") || 
-              dataDoc.message.data.startsWith("No HTTP response")) {
+              dataDoc.message.data.startsWith("No HTTP response") ||
+              dataDoc.message.data.includes("The tracker has probably malfunctioned.")
+            ) {
             document.getElementById(name).classList.add("error");
           } else {
             if (document.getElementById(name).classList.contains("error")) {
