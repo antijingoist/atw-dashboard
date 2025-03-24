@@ -263,6 +263,17 @@ html, body {
   color: var(--console-node-fg);
 }
 
+#console p.error.e403 {
+  background: var(--negative-color) !important;
+  color: black;
+  position: sticky;
+  top: 0;
+}
+
+#console p.error.e403 .timestamp {
+  color: black;
+}
+
 #console .timestamp {
   background-color: var(--console-timestamp-bg);
   color: var(--console-timestamp-fg);
