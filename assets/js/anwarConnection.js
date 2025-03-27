@@ -80,6 +80,20 @@ class anwarConnection {
               document.getElementById(name).classList.remove("error");
             }
           }
+         if (dataDoc.message.data.includes("kB/s")) {
+          document.getElementById(name).classList.add("uploading");
+         } else {
+          if (document.getElementById(name).classList.contains("uploading")) {
+            document.getElementById(name).classList.remove("uploading");
+          }          
+         }
+         if (dataDoc.message.data.includes("Tracker rate limiting")) {
+          document.getElementById(name).classList.add("throttle");
+         } else {
+          if (document.getElementById(name).classList.contains("throttle")) {
+            document.getElementById(name).classList.remove("throttle");
+          }          
+         }
         }
         if (dataDoc.event_name="project.refresh"){
           if(dataDoc.message.project) {
