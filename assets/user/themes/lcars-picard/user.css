@@ -189,7 +189,7 @@
   color: var(--console-line-fg);
 }
 
-button, .window input {
+button, .window input, textarea {
   border-radius: 10px;  
   background-color: var(--console-line-fg);
   color: var(--background-color);
@@ -197,7 +197,7 @@ button, .window input {
   border: none;
 }
 
-.window input {
+.window input, textarea {
   background: var(--background-color);
   border: 4px solid var(--console-line-fg);
   color:  var(--console-line-fg);
