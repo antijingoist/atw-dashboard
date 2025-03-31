@@ -121,6 +121,12 @@ html, body {
   border-bottom: 1px dotted var(--foreground-color);
 }
 
+#metric h1 a {
+  color: var(--foreground-color);
+  text-decoration: none;
+}
+
+
 /* Statuses  */
 
 .chartSet {
@@ -394,6 +400,7 @@ html, body {
   #metric {
     font-size: .75rem;
   }
+
   .window {
     width: calc(100% - 1rem);
     left: 0px;
