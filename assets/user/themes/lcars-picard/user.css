@@ -133,6 +133,11 @@
   width: calc(100% - 3rem);
 }
 
+#metric h1 a {
+  color: var(--console-node-fg);
+  text-decoration: none;
+}
+
 #metric h1::after {
   content: " ";
   background-color:var(--console-node-bg);
@@ -176,6 +181,26 @@
 #toolbox .label {
   color: var(--console-node-fg);
   text-align: center;
+}
+
+.window {
+  background: var(--background-color);
+  border: 4px solid var(--console-line-fg); 
+  color: var(--console-line-fg);
+}
+
+button, .window input {
+  border-radius: 10px;  
+  background-color: var(--console-line-fg);
+  color: var(--background-color);
+  font-weight: bold;
+  border: none;
+}
+
+.window input {
+  background: var(--background-color);
+  border: 4px solid var(--console-line-fg);
+  color:  var(--console-line-fg);
 }
 
 ::-webkit-scrollbar {
