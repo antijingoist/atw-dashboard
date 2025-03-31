@@ -16,6 +16,7 @@
   --toolbox-label-fg: var(--foreground-color);
   --toolbox-icon-bg: var(--foreground-color);
   --toolbox-icon-fg: var(--background-color);
+  --chart-bandwidth-color: green;
 }
 
 body {
