@@ -19,6 +19,10 @@
   --chart-bandwidth-color: green;
 }
 
+html {
+  font-size: 10px;
+}
+
 body {
   background: var(--background-color);
   color: var(--foreground-color);
@@ -261,7 +265,7 @@ html, body {
   width: calc(100% - 4px);
   color: var(--foreground-color);
   font-family: monospace;
-  font-size: .75rem;
+  font-size: 1rem;
   overflow-y: auto;
   overflow-x: hidden;
   padding: 2px;
