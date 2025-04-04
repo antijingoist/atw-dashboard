@@ -97,10 +97,17 @@ class controller {
             var statPos = downloaderArray.findIndex(e => { return (e.name === name) });
             var gigsDL = this.humanBytes( fullStatData.downloader_bytes[name] );
             var statTotP = fullStatData.downloaders.length;
+            
+            var rank = this.getStatRank(statPos, statTotP);
+            var rankText = "";
+            if (rank != 0 ) {
+              rankText = ` (top ${rank}%)`;
+            }
+
             statPlace.innerHTML = `<h1><a href="https://tracker.archiveteam.org/${project}/" target="blank">${project}</a></h1>
                                   <p>Data Saved: <span class=data>${gigsDL.toLocaleString()}</span></p>
                                   <p>Items Saved: <span class=data>${fullStatData.downloader_count[name].toLocaleString()}</span></p>
-                                  <p>Position: <span class=data>${statPos} / ${statTotP}</span></p>
+                                  <p>Position: <span class=data>${statPos} / ${statTotP}${rankText}</span></p>
                                   <p>As of: <span class=data>${currentDate}</span></p>`;
             this.updateTimer(name, project);
           } else {
@@ -198,6 +205,22 @@ class controller {
   setProject(project) {
     this.allSettings.project = project;
     this.updateMetrics(this.allSettings.nick, this.allSettings.project);
+  }
+
+  getStatRank(pos, total) {
+    var percent = (pos / total) * 100;
+    console.log(percent);
+    var rank = 0;
+    var ranks = [50,25,10,5,1];
+
+    ranks.forEach(r =>{
+      if (percent <= r){
+        rank = r;
+        console.log(r);
+      }
+    })
+
+    return rank;
   }
 
 }
