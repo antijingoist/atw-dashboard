@@ -4,6 +4,7 @@ class controller {
   warriorServerConnections;
   warriorServerDisconnects;
   allSettings;
+  projects;
 
 
   constructor(savedSettings) {
@@ -12,6 +13,7 @@ class controller {
     this.#settingsDialog = document.getElementById('window-settings');
     this.warriorServerDisconnects = {};
     this.warriorServerConnections = new Array();
+    this.projects = new Array();
 
     if(!savedSettings){
       this.allSettings = { nick : "", project: "", reuse: true, warriorServers: {}};
@@ -73,7 +75,21 @@ class controller {
     });
   }
 
-  updateMetrics(name, project) {
+  updateMetrics(name, projects){
+    var statPlace = document.getElementById("metric");
+    console.log("=======Projects=======");
+    console.log(projects);
+    statPlace.innerHTML = "";
+    projects.forEach(project => {
+      statPlace.innerHTML+= `<div id="${project}-metric"></div>`;
+    })
+
+    projects.forEach(project => {
+      this.addMetrics(name, project);
+    })
+  }
+
+  addMetrics(name, project) {
     if (project) {
       fetch(`https://legacy-api.arpa.li/${project}/stats.json`, {
         "method": "GET",
@@ -84,7 +100,7 @@ class controller {
           var downloaderArray = new Array();
           var currentDate = new Date().toLocaleString();
           var fullStatData = JSON.parse(stats);
-          var statPlace = document.getElementById("metric");
+          var statPlace = document.getElementById(`${project}-metric`);
 
           if (fullStatData.downloaders.indexOf(name) > 0) {
 
@@ -97,7 +113,7 @@ class controller {
             var statPos = downloaderArray.findIndex(e => { return (e.name === name) });
             var gigsDL = this.humanBytes( fullStatData.downloader_bytes[name] );
             var statTotP = fullStatData.downloaders.length;
-            
+
             var rank = this.getStatRank(statPos, statTotP);
             var rankText = "";
             if (rank != 0 ) {
@@ -109,11 +125,11 @@ class controller {
                                   <p>Items Saved: <span class=data>${fullStatData.downloader_count[name].toLocaleString()}</span></p>
                                   <p>Position: <span class=data>${statPos} / ${statTotP}${rankText}</span></p>
                                   <p>As of: <span class=data>${currentDate}</span></p>`;
-            this.updateTimer(name, project);
+            
           } else {
             statPlace.innerHTML = `<p>Stats for ${name}: ${project} not available yet.</p>`;
           }
-
+          this.updateTimer(name, this.projects);
 
         })
         .then(console.log.bind(console))
@@ -198,13 +214,18 @@ class controller {
 
   updateTimer(nick, project) {
     setTimeout(() => {
-      this.updateMetrics(nick, project);
+      this.updateMetrics(nick, this.projects);
     }, 300000);
   }
 
   setProject(project) {
-    this.allSettings.project = project;
-    this.updateMetrics(this.allSettings.nick, this.allSettings.project);
+    var np = project.replace(/\s/g, '');
+    console.log(this.projects);
+    if(!(this.projects.includes(np))){
+      this.projects.push(np);
+    } 
+    this.allSettings.project = np;
+    this.updateMetrics(this.allSettings.nick, this.projects);
   }
 
   getStatRank(pos, total) {
