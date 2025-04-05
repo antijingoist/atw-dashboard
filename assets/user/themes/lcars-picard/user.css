@@ -116,6 +116,7 @@
   padding: 1rem;
   padding-top: none;
   margin-top:1rem;
+  position: relative;
 }
 
 #metric h1 {
@@ -130,7 +131,11 @@
   border: none;
   overflow: hidden;
   white-space: nowrap;
-  width: calc(100% - 3rem);
+  width: calc(100% - 4rem);
+}
+
+#metric > div {
+  position:relative;
 }
 
 #metric h1 a {
@@ -145,7 +150,7 @@
   border-radius: var(--lcars-br);
   top: 0;
   width: 2rem;
-  right: 0rem;
+  right: calc(0rem - 0.8rem);
   position:absolute;
   display:inline-block;
   margin: 0 0.5rem;
@@ -158,7 +163,7 @@
   border: none;
   width: calc(100% - 6rem);
   flex-wrap: nowrap;
-  justify-content: space-between  ;
+  justify-content: space-between ;
 }
 
 #toolbox .toolbox-button {
