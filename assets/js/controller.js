@@ -76,14 +76,13 @@ class controller {
   }
 
   updateMetrics(name, projects){
+    console.log("refreshing metrics...");
     var statPlace = document.getElementById("metric");
-    console.log("=======Projects=======");
-    console.log(projects);
-    statPlace.innerHTML = "";
     projects.forEach(project => {
-      statPlace.innerHTML+= `<div id="${project}-metric"></div>`;
+      if(!(document.getElementById(`${project}-metric`))){
+        statPlace.innerHTML +=`<div id="${project}-metric"></div>`;
+      }
     })
-
     projects.forEach(project => {
       this.addMetrics(name, project);
     })
@@ -230,14 +229,12 @@ class controller {
 
   getStatRank(pos, total) {
     var percent = (pos / total) * 100;
-    console.log(percent);
     var rank = 0;
     var ranks = [50,25,10,5,1];
 
     ranks.forEach(r =>{
       if (percent <= r){
         rank = r;
-        console.log(r);
       }
     })
 
