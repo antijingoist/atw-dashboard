@@ -11,7 +11,7 @@ I did, and instead of trying to hook into Grafana or any other more established 
 
 * Instances having issues are highlighted in red.
 
-* Pick one project to track and see your stats: how much data you've saved, and your position in the leaderboard.
+* Displays each of your projects on the left: how much data you've saved, and your position in the leaderboard.
 
 * An aggregate log that shows your instances are in fact doing work. 
 
