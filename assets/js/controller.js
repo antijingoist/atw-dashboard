@@ -77,15 +77,18 @@ class controller {
 
   updateMetrics(name, projects){
     console.log("refreshing metrics...");
-    var statPlace = document.getElementById("metric");
-    projects.forEach(project => {
-      if(!(document.getElementById(`${project}-metric`))){
-        statPlace.innerHTML +=`<div id="${project}-metric"></div>`;
-      }
-    })
-    projects.forEach(project => {
-      this.addMetrics(name, project);
-    })
+    if(projects.length > 0) {
+      var statPlace = document.getElementById("metric");
+      projects.forEach(project => {
+        if(!(document.getElementById(`${project}-metric`))){
+          statPlace.innerHTML +=`<div id="${project}-metric"></div>`;
+        }
+      });
+      projects.forEach(project => {
+        this.addMetrics(name, project);
+      });
+    }
+ 
   }
 
   addMetrics(name, project) {
@@ -222,9 +225,9 @@ class controller {
     console.log(this.projects);
     if(!(this.projects.includes(np))){
       this.projects.push(np);
+      this.allSettings.project = np;
+      this.updateMetrics(this.allSettings.nick, this.projects);
     } 
-    this.allSettings.project = np;
-    this.updateMetrics(this.allSettings.nick, this.projects);
   }
 
   getStatRank(pos, total) {
